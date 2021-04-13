@@ -1,6 +1,7 @@
 from cv2 import cv2
 import pytesseract
 # import numpy as np
+import csv
 
 #gives the text from image
 
@@ -33,3 +34,9 @@ treated_img = thresholding(img)
 
 print(ocr_core(img))
 
+#export to csv file
+with open('result.xlsx','w') as out_file:
+    writer = csv.writer(out_file)
+
+    writer.writerow(ocr_core(img))
+    
