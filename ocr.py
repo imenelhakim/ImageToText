@@ -12,7 +12,7 @@ def ocr_core(img):
     text = pytesseract.image_to_string(img)
     return text
 
-img = cv2.imread('images/cv3.jpg')
+img = cv2.imread('images/cv.jpg')
 
 #convert imge to grayscale
 def get_grayscale(image):
@@ -34,9 +34,26 @@ treated_img = thresholding(img)
 
 print(ocr_core(img))
 
-#export to csv file
-with open('result.xlsx','w') as out_file:
-    writer = csv.writer(out_file)
+# #export to csv file (method1 > exports results1)    => NO
+# with open('result1.csv','w') as out_file:
+#     writer = csv.writer(out_file)
+
+#     writer.writerow(ocr_core(img))
+
+# #export to csv file (method1 > exports results2)    => NO
+# with open('result2.csv','w') as out_file:
+#     writer = csv.writer(out_file,delimiter =' ',quotechar =',',quoting=csv.QUOTE_MINIMAL)
+
+#     writer.writerow(ocr_core(img))
+
+#export to csv file (method1 > exports results3)    => CAN BE AMELIORATED
+with open('result3.csv','w') as out_file:
+    writer = csv.writer(out_file,delimiter =' ',quotechar =' ',quoting=csv.QUOTE_MINIMAL)
 
     writer.writerow(ocr_core(img))
-    
+  
+# #export to csv file (method1 > exports results4)    => NO NO NO
+# with open('result4.csv','w') as out_file:
+#     writer = csv.writer(out_file,delimiter ='|',quotechar =' ',quoting=csv.QUOTE_MINIMAL)
+
+#     writer.writerow(ocr_core(img))
